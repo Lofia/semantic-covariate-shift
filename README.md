@@ -154,8 +154,7 @@ KMM achieves comparable accuracy when successful, but produces invalid negative 
 │   ├── create_target_loss_lookup.py
 │   ├── run_repeated_risk_experiment_v3.R
 │   └── MM_function.R
-├── requirements.txt
-└── .gitignore
+└── requirements.txt
 ```
 
 Large model checkpoints, virtual environments, Hugging Face caches, and generated intermediate datasets are intentionally excluded from the repository.
@@ -170,6 +169,11 @@ Run the scripts from the project root in the following order.
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+```
+
+### 0. Prepare the data
+```bash
+python src/prepare_data.py
 ```
 
 ### 1. Train the pilot model
