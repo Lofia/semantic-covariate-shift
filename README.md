@@ -12,7 +12,7 @@ The main finding is that **naive source-domain evaluation is substantially biase
 flowchart LR
     A[AG News pilot data] --> B[Frozen DistilBERT pilot model]
     B --> C[Business semantic score]
-    C --> D[Randomized PIT<br/>X ~ Exp(1)]
+    C --> D["Randomized PIT<br/>X ~ Exp(1)"]
     D --> E[Monotone selection mechanism]
     E --> F[Shifted labeled source sample]
     D --> G[Unlabeled target-X sample]
@@ -28,9 +28,9 @@ flowchart LR
 
 AI models are often evaluated on data drawn from a different distribution than the one encountered after deployment. Under covariate shift,
 
-\[
+$$
 P_s(X) \neq P_t(X), \qquad P_s(Y\mid X)=P_t(Y\mid X),
-\]
+$$
 
 so source-domain evaluation may not accurately represent target-domain performance.
 
@@ -48,19 +48,19 @@ The DistilBERT encoder is frozen and only the classification head is trained. Th
 
 ### 2. Construct a semantic covariate
 
-For each benchmark text \(T\), I define
+For each benchmark text $T$, I define
 
-\[
+$$
 S(T)=P_{\text{pilot}}(\text{Business}\mid T),
-\]
+$$
 
 which provides a continuous Transformer-derived semantic score.
 
 A randomized empirical probability-integral transform maps this score to
 
-\[
+$$
 X\sim \mathrm{Exp}(1)
-\]
+$$
 
 under the finite empirical target population.
 
@@ -68,24 +68,24 @@ under the finite empirical target population.
 
 Source observations are sampled through the monotone selection probability
 
-\[
+$$
 v_b(x)
 =
 0.2+
 0.8\frac{10x+1}{10x+1+b},
-\]
+$$
 
-with \(b=12\).
+with $b=12$.
 
 The corresponding oracle target-to-source density ratio is
 
-\[
+$$
 w(x)
 =
 \frac{p_t(x)}{p_s(x)}
 =
 \frac{Z}{v_b(x)}.
-\]
+$$
 
 ### 4. Estimate density ratios
 
@@ -100,14 +100,14 @@ I compare:
 
 ### 5. Estimate target risk
 
-For a fixed classifier with per-example cross-entropy loss \(\ell_i\), target risk is estimated with self-normalized importance weighting:
+For a fixed classifier with per-example cross-entropy loss $\ell_i$, target risk is estimated with self-normalized importance weighting:
 
-\[
+$$
 \widehat R_t
 =
 \frac{\sum_i \hat w_i\ell_i}
      {\sum_i \hat w_i}.
-\]
+$$
 
 The experiment is repeated 100 times and compared with the exact finite-population target risk.
 
