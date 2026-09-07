@@ -1,8 +1,8 @@
 # Target-Risk Estimation under Semantic Covariate Shift
 
-This project studies **model evaluation under covariate shift** using a Transformer-based text classification setting.
+This project studies **model evaluation under covariate shift** using a **Transformer-based text classification** setting.
 
-A fixed DistilBERT classifier is evaluated under a controlled semantic distribution shift on the AG News dataset. I construct a Transformer-derived semantic score, generate a shifted source distribution, estimate target-to-source density ratios with several methods, and use importance weighting to estimate the classifier's target-domain cross-entropy risk.
+A **fine-tuned DistilBERT classifier** is evaluated under a controlled semantic distribution shift on the AG News dataset. I construct a Transformer-derived semantic score, generate a shifted source distribution, estimate target-to-source density ratios with several methods, and use importance weighting to estimate the classifier's target-domain cross-entropy risk.
 
 The main finding is that **naive source-domain evaluation is substantially biased under semantic covariate shift**, while density-ratio weighting can recover target risk much more accurately.
 
