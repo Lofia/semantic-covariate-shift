@@ -69,8 +69,7 @@ under the finite empirical target population.
 Source observations are sampled through the monotone selection probability
 
 $$
-v_b(x)
-=
+v_b(x) =
 0.2+
 0.8\frac{10x+1}{10x+1+b},
 $$
@@ -80,10 +79,8 @@ with $b=12$.
 The corresponding oracle target-to-source density ratio is
 
 $$
-w(x)
-=
-\frac{p_t(x)}{p_s(x)}
-=
+w(x) =
+\frac{p_t(x)}{p_s(x)} =
 \frac{Z}{v_b(x)}.
 $$
 
@@ -103,8 +100,7 @@ I compare:
 For a fixed classifier with per-example cross-entropy loss $\ell_i$, target risk is estimated with self-normalized importance weighting:
 
 $$
-\widehat R_t
-=
+\widehat R_t =
 \frac{\sum_i \hat w_i\ell_i}
      {\sum_i \hat w_i}.
 $$
